@@ -26,7 +26,7 @@ public class StreamUtil {
 	 */
 	public static List<String> read(InputStream inputStream) throws IOException{
 		
-		BufferedReader read = new BufferedReader(new InputStreamReader(inputStream));
+		BufferedReader read = new BufferedReader(new InputStreamReader(inputStream,"GBK"));
 		List<String> list = new ArrayList<String>();
 		String str="";
 		while((str=read.readLine())!=null) {
