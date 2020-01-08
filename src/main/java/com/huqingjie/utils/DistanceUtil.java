@@ -37,4 +37,67 @@ public class DistanceUtil {
 	    	double d = getDistance(116.425249, 39.914504,116.382001, 39.913329);
 	        System.out.println("两点的距离:"+d+"米");
 	    }
+	    
+	    /*
+	     * 编写工具类：根据给定的距离天安门公式，输入参数 经纬度，可以计算返回具体的被抓拍车辆出现在北京市区几环
+	     */
+	    public static int looplevelTest(int jd,int wd) {
+	    	 long b = Math.round( Math.sqrt( Math.pow(jd - 39 ,2  ) +  Math.pow(wd - 116 ,2  ) ));
+	    	 if (b<=15) {
+				 return 2;
+	    	 }else if(b<=30) {
+	    		 return 3;
+	    	 }else if(b<=40) {
+	    		 return 4;
+	    	 }else if(b<=60){
+	    		 return 5;
+	    	 }else {
+	    		 return 6;
+	    	 }
+	    }
+	    
+	    /**
+	     * (3)编写工具类：传递参数为机动车类型，以及提供的距离天安门距离计算公式按给定的伪代码判断得到违反交规类型（5分）
+	     */
+	    public static String passType(String cardid,String typeid,int jd,int wd) {
+	    	// 距离
+	    	long b = Math.round( Math.sqrt( Math.pow(jd - 39 ,2  ) +  Math.pow(wd - 116 ,2  ) ));
+	    	if (typeid=="A" && b<15) {
+				return "摩托车A进入2环";
+			}else if(typeid=="B" && b<40){
+				return "摩托车B进入4环";
+			}else if(typeid=="C" && !cardid.startsWith("京") && b<60) {
+				return "外地牌照不能进入5环";
+			}else if(typeid=="C" && cardid.startsWith("京")) {
+				return "可以出入";
+			}else {
+				return "无违规";
+			}
+	    	
+	    }
+	    
+	    /*
+	     * (2)编写工具类，根据传递车牌号码，传递的日期 判断是否符合单双号限行规则（5分）
+	     */
+	    public static String passynTest(String carid) {
+	    	char c = carid.charAt(carid.length()-1);
+	    	
+	    	if (c%2==0) {
+				return "否";
+			}else {
+				return "是";
+			}
+	    	
+	    }
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 }
