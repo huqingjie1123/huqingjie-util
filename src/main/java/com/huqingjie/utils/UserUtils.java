@@ -28,7 +28,8 @@ public class UserUtils {
     }
 
     //随机生成生日
-    public static String getBirthday(){
+    @SuppressWarnings("static-access")
+	public static String getBirthday(){
         GregorianCalendar gc = new GregorianCalendar();
 
         int year = randBetween(1949, 2001);
